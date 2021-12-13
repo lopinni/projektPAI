@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Sukces </title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body {
+        background-color: #dddddd;
+      }
+    </style>
+</head>
+<body>
+<div class="container text-center">
+    <div class="container" style=" padding-top: 25px;">
+        <h3> Pomyślnie zarejestrowano/zmieniono dane konta. </h3>
+        <h4> W przypadku rejestracji wysłaliśmy wiadomość e-mail z potwierdzeniem. </h4>
+        <h4><a th:href="@{/login}"> Kliknij tutaj aby się zalogować </a> </h4>
+    </div>
+</div>
+
+</body>
+</html>

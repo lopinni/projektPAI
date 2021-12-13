@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Projekt PAI </title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/chessboard-1.0.0.min.css" rel="stylesheet">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/chess.js"></script>
+    <script src="js/chessboard-1.0.0.min.js"></script>
+    <style>
+        body {
+          background-image: url('img/background.jpg');
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1"> Witaj w projekcie PAI - aplikacji do gry w szachy. </span>
+        <span class="navbar-text"> &#169; 2021 Maciej Sójka </span>
+    </div>
+</nav>
+
+<div class="container text-center">
+    <div class="container" style=" padding-top: 25px;">
+        <div class="row justify-content-center">
+            <div class="col-5">
+                <div class="btn-group-vertical">
+                    <a class="btn btn-lg btn-primary" th:href="@{/register}"> Zarejestruj się </a>
+                    <a class="btn btn-lg btn-primary" th:href="@{/login}"> Zaloguj się </a>
+                </div>
+                <div class="container" style=" padding-top: 25px;">
+                    <img src="img/logo.jpg" style="width: 80%">
+                </div>
+            </div>
+            <div class="col-5">
+                <div id="myBoard" style="width: 100%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+var board = null
+var game = new Chess()
+
+function makeRandomMove () {
+  var possibleMoves = game.moves()
+  if (game.game_over()) return
+  var randomIdx = Math.floor(Math.random() * possibleMoves.length)
+  game.move(possibleMoves[randomIdx])
+  board.position(game.fen())
+  window.setTimeout(makeRandomMove, 1700)
+}
+
+board = Chessboard('myBoard', 'start')
+
+window.setTimeout(makeRandomMove, 1700)
+
+</script>
+
+</body>
+</html>
